@@ -1,7 +1,9 @@
+<% include partials/header %>
 <h1>CAMPGROUNDS PAGE</h1>
 
 <p>Welcome to the Yelp Camp grounds</p>
 
+<a href="/">Return to Home page</a>
 <!-- loop through the array of items and display the names and images -->
 <% campgrounds.forEach(function(campground){ %>
    <div>
@@ -9,3 +11,5 @@
        <img src="<%=campground.image%>" alt="">
    </div>
 <% }) %>
+
+<% include partials/footer %>
