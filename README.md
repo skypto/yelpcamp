@@ -4,7 +4,7 @@
 # V1.1.0
 Layout and Basic Styling
 * Create Header and Footer Partials
-* Addin bootstrap
+* Adding bootstrap
 
 
 
