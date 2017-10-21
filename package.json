@@ -1,0 +1,27 @@
+{
+  "name": "yelpcamp",
+  "version": "1.0.0",
+  "description": "Yelp Camp",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skypto/yelpcamp.git"
+  },
+  "keywords": [
+    "fullstack",
+    "app"
+  ],
+  "author": "Kwabena Kesse Awuah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skypto/yelpcamp/issues"
+  },
+  "homepage": "https://github.com/skypto/yelpcamp#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2"
+  }
+}
