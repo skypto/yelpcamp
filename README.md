@@ -1,5 +1,11 @@
 # yelpcamp
 
+# V1.2.0
+Creating New Camp grounds
+* Setup new campground POST route
+* Add in body-parser
+* Setup route to show form
+* Add basic unstyled form
 
 # V1.1.0
 Layout and Basic Styling
