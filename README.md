@@ -1,5 +1,11 @@
 # yelpcamp
 
+# V1.3.0
+Style the Campgrounds Page
+* Add a better Header/Title
+* Make campground display in a grid
+
+
 # V1.2.0
 Creating New Camp grounds
 * Setup new campground POST route

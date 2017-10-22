@@ -14,7 +14,15 @@
  var campgrounds = [
     {name: "Plain View", image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg"},
     {name: "Camper Site", image:"https://farm9.staticflickr.com/8673/15989950903_8185ed97c3.jpg"},
-    {name: "Mountain View", image:"https://farm2.staticflickr.com/1424/1430198323_c26451b047.jpg"}
+    {name: "Mountain View", image:"https://farm2.staticflickr.com/1424/1430198323_c26451b047.jpg"},
+    {name: "Plain View", image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg"},
+    {name: "Camper Site", image:"https://farm9.staticflickr.com/8673/15989950903_8185ed97c3.jpg"},
+    {name: "Plain View", image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg"},
+    {name: "Camper Site", image:"https://farm9.staticflickr.com/8673/15989950903_8185ed97c3.jpg"},
+    {name: "Plain View", image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg"},
+    {name: "Camper Site", image:"https://farm9.staticflickr.com/8673/15989950903_8185ed97c3.jpg"},
+    {name: "Plain View", image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg"},
+    {name: "Camper Site", image:"https://farm9.staticflickr.com/8673/15989950903_8185ed97c3.jpg"},
 ];
 
 
