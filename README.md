@@ -1,5 +1,11 @@
 # yelpcamp
 
+# V1.4.0
+Style the NavBar and forms
+* Add a navbar to all templates
+* Style the new campground form
+
+
 # V1.3.0
 Style the Campgrounds Page
 * Add a better Header/Title
