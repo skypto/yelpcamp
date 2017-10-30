@@ -2,6 +2,21 @@
  var express = require("express");
  var app = express();
 
+ //require mongoose
+ var mongoose = require("mongoose");
+
+ //connect mongodb and create yelp_camp db
+ mongoose.connect("mongodb://localhost/yelp_camp");
+
+ // setup the Schema for yelp_camp db
+ var campgroundSchema = new mongoose.Schema({
+     name:String,
+     image:String
+ });
+
+ //compile the schema into a model <--collection name is Campground in quotes
+var Campground = mongoose.model("Campground",campgroundSchema);
+
  //Add in body-parser. BodyParser object exposes various factories to create middlewares. Available under the req.body
  // Allows to collect data from form
  var bodyParser = require("body-parser");
@@ -9,6 +24,20 @@
 
  //set the route engine for view to allow the use of filenames without .ejs extension
  app.set("view engine", "ejs");
+
+// //Create a new campground for new Mongo DB         
+// Campground.create(
+//     {
+//         name: "Camper Site", 
+//         image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg"
+//     },function(err, campground){
+//         if(err){
+//             console.log(err);
+//         }else{
+//             console.log('Newly created campground');
+//             console.log(campground);
+//         }
+//     });
 
  //define the static DB
  var campgrounds = [
@@ -34,7 +63,16 @@ app.get("/",function(req,res){
 
 //campgrounds pages route
 app.get("/campgrounds",function(req,res){
-    res.render("campgrounds",{campgrounds:campgrounds});
+    // res.render("campgrounds",{campgrounds:campgrounds});
+
+    //Get all campgrounds from Mongo DB and render to the page
+    Campground.find({}, function(err,allCampgrounds){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("campgrounds",{campgrounds:allCampgrounds});
+        }
+    });
 });
 
 
@@ -51,16 +89,20 @@ app.post("/campgrounds",function(req,res){
     var name=req.body.name;
     var image=req.body.image;
     var newCampground = {name:name, image:image};
-    campgrounds.push(newCampground);
-
-    //redirect back to campgrounds page
-    res.redirect("campgrounds")
+    // campgrounds.push(newCampground);
+    // Create a new campground and save to the mongo DB
+    Campground.create(newCampground,function(err,newlyCreated){
+        if(err){
+            console.log(err);
+        }else{
+            //redirect back to campgrounds page
+            res.redirect("campgrounds");
+        }
+    });
 });
 
 //Server initialization
  app.listen(3000, function(req,res){
      console.log("Server started, listening on port 3000");
  });
-function newFunction() {
-    return true;
-}
+

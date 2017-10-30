@@ -1,5 +1,17 @@
 # yelpcamp
 
+# V2.0.0
+Introduce Mongo Database for persistence
+* Install and configure mongoose
+* Setup Campground model
+* Use campground model inside of existing routes
+
+Note: Install mongoose module in working folder for this to work.
+
+```sh
+$ npm install --save mongoose
+```
+
 # V1.4.0
 Style the NavBar and forms
 * Add a navbar to all templates
@@ -35,7 +47,8 @@ Each campground has:
 * Name
 * Image
 
-`Sample structure of static DB
+`
+Sample structure of static DB
 [
     {name: "Kesse" , image:"http//:www.image.com"}
     {name: "Kesse" , image:"http//:www.image.com"}
