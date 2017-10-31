@@ -1,5 +1,20 @@
 # yelpcamp
 
+# V2.1.0
+Usage of restful Routing convention
+* Define route for showing a single item (show route)
+* Rename campgrounds.ejs to index.ejs to conform with the Logical Structure Naming Convention
+* Update the Campground schema to add a 'description' to campground model 
+
+
+| Name |     Url        |  Verb     | Description    |     
+| ------    | ------    | ------    |   ------       |
+|INDEX      |/dogs      |   GET     | Displays a list of all dogs|
+|NEW        |/dogs/new  |   GET     | Display form to make a new dog|
+|CREATE     |   /dogs      |   POST    | Add new dog to DB |
+|SHOW       |/dogs/:id  |   GET     |  Shows info about one dog|
+
+
 # V2.0.0
 Introduce Mongo Database for persistence
 * Install and configure mongoose

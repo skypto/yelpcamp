@@ -11,7 +11,8 @@
  // setup the Schema for yelp_camp db
  var campgroundSchema = new mongoose.Schema({
      name:String,
-     image:String
+     image:String,
+     description: String
  });
 
  //compile the schema into a model <--collection name is Campground in quotes
@@ -28,8 +29,9 @@ var Campground = mongoose.model("Campground",campgroundSchema);
 // //Create a new campground for new Mongo DB         
 // Campground.create(
 //     {
-//         name: "Camper Site", 
-//         image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg"
+//         name: "Wonder Camp", 
+//         image:"https://farm2.staticflickr.com/1424/1430198323_c26451b047.jpg",
+//         description: "Community sponsored camp site"
 //     },function(err, campground){
 //         if(err){
 //             console.log(err);
@@ -56,12 +58,12 @@ var Campground = mongoose.model("Campground",campgroundSchema);
 
 
 
-//main route for hompage 
+//main route for hompage
 app.get("/",function(req,res){
     res.render("landing");
 });
 
-//campgrounds pages route
+//campgrounds pages route  <-INDEX
 app.get("/campgrounds",function(req,res){
     // res.render("campgrounds",{campgrounds:campgrounds});
 
@@ -70,25 +72,26 @@ app.get("/campgrounds",function(req,res){
         if(err){
             console.log(err);
         }else{
-            res.render("campgrounds",{campgrounds:allCampgrounds});
+            res.render("index",{campgrounds:allCampgrounds});
         }
     });
 });
 
 
-// Setup route to show form
+// Setup route to show form  <-NEW
 app.get("/campgrounds/new",function(req,res){
     res.render("new");
 });
 
 
 
-// Setup new campground POST route
+// Setup new campground POST route  <- CREATE
 app.post("/campgrounds",function(req,res){
     //get data from form(req.body body parser) and add to campgrounds array
     var name=req.body.name;
     var image=req.body.image;
-    var newCampground = {name:name, image:image};
+    var desc=req.body.description;
+    var newCampground = {name:name, image:image, description:desc};
     // campgrounds.push(newCampground);
     // Create a new campground and save to the mongo DB
     Campground.create(newCampground,function(err,newlyCreated){
@@ -96,9 +99,24 @@ app.post("/campgrounds",function(req,res){
             console.log(err);
         }else{
             //redirect back to campgrounds page
-            res.redirect("campgrounds");
+            res.redirect("/campgrounds");
         }
     });
+});
+
+
+//Show information about one campground
+app.get("/campgrounds/:id",function(req,res){
+    //find the campground with provided ID
+    Campground.findById(req.params.id,function(err, foundCampground){
+            if(err){
+                console.log(err);
+            }else{
+                //Render Show template with provided campground
+                res.render("show", {campground:foundCampground});
+            }
+    });
+    
 });
 
 //Server initialization

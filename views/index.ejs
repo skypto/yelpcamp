@@ -17,11 +17,14 @@
         <!-- loop through the array of items and display the names and images -->
         <% campgrounds.forEach(function(campground){ %>
         <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                <img src="<%=campground.image%>" alt="">
+                <div class="thumbnail" style="height:300px;">
+                <img src="<%=campground.image%>" alt="" style="height:189.38px;">
                     <div class="caption">
                     <h4><%= campground.name%></h4>
                     </div>
+                    <p>
+                        <a href="/campgrounds/<%= campground._id%>" class="btn btn-primary">More Info</a>
+                    </p>
                 </div>  
         </div>
         <% }) %>
