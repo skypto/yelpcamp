@@ -8,15 +8,12 @@
  //connect mongodb and create yelp_camp db
  mongoose.connect("mongodb://localhost/yelp_camp");
 
- // setup the Schema for yelp_camp db
- var campgroundSchema = new mongoose.Schema({
-     name:String,
-     image:String,
-     description: String
- });
+ // require the Schema for campground collection
+ var Campground= require("./models/campground");
 
- //compile the schema into a model <--collection name is Campground in quotes
-var Campground = mongoose.model("Campground",campgroundSchema);
+//Require the seeds file to set initial values into the DB 
+var seedDB = require("./seeds");
+seedDB();
 
  //Add in body-parser. BodyParser object exposes various factories to create middlewares. Available under the req.body
  // Allows to collect data from form
@@ -26,37 +23,7 @@ var Campground = mongoose.model("Campground",campgroundSchema);
  //set the route engine for view to allow the use of filenames without .ejs extension
  app.set("view engine", "ejs");
 
-// //Create a new campground for new Mongo DB         
-// Campground.create(
-//     {
-//         name: "Wonder Camp", 
-//         image:"https://farm2.staticflickr.com/1424/1430198323_c26451b047.jpg",
-//         description: "Community sponsored camp site"
-//     },function(err, campground){
-//         if(err){
-//             console.log(err);
-//         }else{
-//             console.log('Newly created campground');
-//             console.log(campground);
-//         }
-//     });
-
- //define the static DB
- var campgrounds = [
-    {name: "Plain View", image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg"},
-    {name: "Camper Site", image:"https://farm9.staticflickr.com/8673/15989950903_8185ed97c3.jpg"},
-    {name: "Mountain View", image:"https://farm2.staticflickr.com/1424/1430198323_c26451b047.jpg"},
-    {name: "Plain View", image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg"},
-    {name: "Camper Site", image:"https://farm9.staticflickr.com/8673/15989950903_8185ed97c3.jpg"},
-    {name: "Plain View", image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg"},
-    {name: "Camper Site", image:"https://farm9.staticflickr.com/8673/15989950903_8185ed97c3.jpg"},
-    {name: "Plain View", image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg"},
-    {name: "Camper Site", image:"https://farm9.staticflickr.com/8673/15989950903_8185ed97c3.jpg"},
-    {name: "Plain View", image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg"},
-    {name: "Camper Site", image:"https://farm9.staticflickr.com/8673/15989950903_8185ed97c3.jpg"},
-];
-
-
+//-----------------------------------ROUTE DEFINITIONS----------------------------//
 
 //main route for hompage
 app.get("/",function(req,res){
@@ -65,8 +32,7 @@ app.get("/",function(req,res){
 
 //campgrounds pages route  <-INDEX
 app.get("/campgrounds",function(req,res){
-    // res.render("campgrounds",{campgrounds:campgrounds});
-
+   
     //Get all campgrounds from Mongo DB and render to the page
     Campground.find({}, function(err,allCampgrounds){
         if(err){
@@ -76,13 +42,6 @@ app.get("/campgrounds",function(req,res){
         }
     });
 });
-
-
-// Setup route to show form  <-NEW
-app.get("/campgrounds/new",function(req,res){
-    res.render("new");
-});
-
 
 
 // Setup new campground POST route  <- CREATE
@@ -105,13 +64,23 @@ app.post("/campgrounds",function(req,res){
 });
 
 
+
+// Setup route to show form  <-NEW
+app.get("/campgrounds/new",function(req,res){
+    res.render("new");
+});
+
+
+
 //Show information about one campground
 app.get("/campgrounds/:id",function(req,res){
     //find the campground with provided ID
-    Campground.findById(req.params.id,function(err, foundCampground){
+    console.log(req.params.id)
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
             if(err){
                 console.log(err);
             }else{
+                console.log(foundCampground);
                 //Render Show template with provided campground
                 res.render("show", {campground:foundCampground});
             }

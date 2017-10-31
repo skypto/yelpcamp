@@ -1,5 +1,15 @@
 # yelpcamp
 
+# V3.0.0
+Refactoring of codebase 
+* Creation of models directory
+* Use of model.exports
+* Creation of a seeds file to perform an initial starting data population into database.
+* Use 'require' keyword to import model items as dependencies for other apps to run.
+* Create a new schema propery called comments   
+* Make Comments visible 
+
+
 # V2.1.0
 Usage of restful Routing convention
 * Define route for showing a single item (show route)
