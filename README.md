@@ -1,5 +1,23 @@
 # yelpcamp
 
+# V4.0.0
+Improvement in comments feature 
+* Introduce nested routes
+* Possibility to create new comments
+* Add comments on campground show page
+
+``
+STRUCTURE OF ROUTING
+- INDEX       /campgrounds 
+- NEW         /campgrounds/new
+- CREATE      /campgrounds
+- SHOW        /campgrounds/:id
+
+Comments will take this form:
+- NEW         campgrounds/:id/comments/new    GET
+- CREATE      campgrounds/:id/comments        POST
+``
+
 # V3.0.0
 Refactoring of codebase 
 * Creation of models directory
