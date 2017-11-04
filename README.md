@@ -2,10 +2,13 @@
 An App that provides users with information about various campgrounds available in specific locations.
 It also provides comments and reviews from other users.
 
+# V6.1.0
+* Add login routes
+* Add login templates
 
-#V6.0.0
+# V6.0.0
 User Autentication and login with passport
-* Install all packages needed for authentication
+* Install all packages needed for authentication.
 
 `$ npm install --save passport passport-local passport-local-mongoose express-session`
 * Define 'user' model
@@ -13,7 +16,7 @@ User Autentication and login with passport
 * Add 'register' route
 * Add 'register' template
 
-* Code refactoring 
+* Minor Code refactoring for module requirements
 
 # V5.0.0
 * Add sidebar to show page
