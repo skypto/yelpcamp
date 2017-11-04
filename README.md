@@ -1,4 +1,24 @@
 # yelpcamp
+An App that provides users with information about various campgrounds available in specific locations.
+It also provides comments and reviews from other users.
+
+
+#V6.0.0
+User Autentication and login with passport
+* Install all packages needed for authentication
+
+`$ npm install --save passport passport-local passport-local-mongoose express-session`
+* Define 'user' model
+* Configure Passport
+* Add 'register' route
+* Add 'register' template
+
+* Code refactoring 
+
+# V5.0.0
+* Add sidebar to show page
+* Display comments nicely
+* Create new public folder and store css styles
 
 # V4.0.0
 Improvement in comments feature 

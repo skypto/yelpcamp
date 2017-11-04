@@ -9,27 +9,27 @@ var data = [
     {
     name:"Clouds Arena", 
     image:"https://farm9.staticflickr.com/8167/7121865553_e1c6a31f07.jpg",
-    description:"Campgrounds Available"
+    description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ipsa nostrum repudiandae nemo recusandae totam voluptate distinctio possimus illum optio ut beatae obcaecati minus quos, nisi at, vero laboriosam dolorum!"
     },
     {
     name:"Camper Paradise ", 
     image:"https://farm2.staticflickr.com/1424/1430198323_c26451b047.jpg",
-    description:"Campgrounds Available"
+    description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ipsa nostrum repudiandae nemo recusandae totam voluptate distinctio possimus illum optio ut beatae obcaecati minus quos, nisi at, vero laboriosam dolorum!"
     },
     {
         name:"Zugo Campgrounds", 
         image:"https://farm1.staticflickr.com/112/316612921_f23683ca9d.jpg",
-        description:"Campgrounds Available"
+        description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ipsa nostrum repudiandae nemo recusandae totam voluptate distinctio possimus illum optio ut beatae obcaecati minus quos, nisi at, vero laboriosam dolorum!"
     },
     {
         name:"Dandy Sites", 
         image:"https://farm3.staticflickr.com/2919/14554501150_8538af1b56.jpg",
-        description:"Campgrounds Available"
+        description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ipsa nostrum repudiandae nemo recusandae totam voluptate distinctio possimus illum optio ut beatae obcaecati minus quos, nisi at, vero laboriosam dolorum!"
     },
     {
         name:"Hidey Grounds", 
         image:"https://farm5.staticflickr.com/4106/5096334506_86b850f551.jpg",
-        description:"Campgrounds Available"
+        description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ipsa nostrum repudiandae nemo recusandae totam voluptate distinctio possimus illum optio ut beatae obcaecati minus quos, nisi at, vero laboriosam dolorum!"
     },
 ];
 
