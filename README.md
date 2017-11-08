@@ -2,6 +2,12 @@
 An App that provides users with information about various campgrounds available in specific locations.
 It also provides comments and reviews from other users.
 
+# V6.2.0
+* Add logout route
+* Prevent user from adding comment if not logged in
+* Add links to navbar
+* show/hide auth links correctly 
+
 # V6.1.0
 * Add login routes
 * Add login templates
