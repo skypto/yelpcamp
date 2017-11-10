@@ -2,6 +2,9 @@
 An App that provides users with information about various campgrounds available in specific locations.
 It also provides comments and reviews from other users.
 
+# V9.0.0
+* Save username+id to newly created campgrounds
+
 # V8.0.0 
 * Associate users and comments
 * Save authors name to a comment automatically
