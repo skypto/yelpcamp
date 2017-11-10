@@ -2,6 +2,12 @@
 An App that provides users with information about various campgrounds available in specific locations.
 It also provides comments and reviews from other users.
 
+# V8.0.0 
+* Associate users and comments
+* Save authors name to a comment automatically
+* Prevent unathenticated user from creating a campground
+
+
 # V7.0.0
 Major changes in application structure and routing
 * Seperation of routes into files which can be required

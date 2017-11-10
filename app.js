@@ -19,7 +19,7 @@ app.set("view engine", "ejs");
 //connect the style sheet by serving data from the public folder which we created
 app.use(express.static(__dirname + "/public"));
 //execute the seedDB function to populate the db anytime the server is started.
-seedDB();
+//seedDB();
 
 
 //<-------  REQUIRE ALL THE ROUTES FILES --->

@@ -15,7 +15,7 @@ var Campground = require("../models/campground");
   });
   
   // Setup new campground POST route  <- CREATE
-  router.post("/campgrounds", function(req, res) {
+  router.post("/campgrounds", isLoggedIn,function(req, res) {
     //get data from form(req.body body parser) and add to campgrounds array
     var name = req.body.name;
     var image = req.body.image;
@@ -34,7 +34,7 @@ var Campground = require("../models/campground");
   });
   
   // Setup route to show form  <-NEW
-  router.get("/campgrounds/new", function(req, res) {
+  router.get("/campgrounds/new",isLoggedIn, function(req, res) {
     res.render("campgrounds/new");
   });
   
@@ -55,6 +55,14 @@ var Campground = require("../models/campground");
       });
   });
   
+  // MIDDLEWARE -- put this function anywhere you want autentication to be checked 
+function isLoggedIn(req,res, next){ 
+  if(req.isAuthenticated()){
+      return next();
+  }
+  res.redirect("/login");
+}
+
 
 
 module.exports=router;

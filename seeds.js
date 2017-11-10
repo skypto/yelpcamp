@@ -36,6 +36,7 @@ var data = [
 function seedDB() {
   // Remove everything from the database
   Campground.remove({}, function(err) {
+
     if (err) {
       console.log(err);
     } else {
@@ -65,7 +66,9 @@ function seedDB() {
             )
         }
     });
-  });
+ 
+
+});
   
 }
 
