@@ -2,6 +2,14 @@
 An App that provides users with information about various campgrounds available in specific locations.
 It also provides comments and reviews from other users.
 
+# V10.0.0
+* Install package "method-override"
+* Add Edit route for campgrounds
+* Add link to Edit page
+* Add Update route
+* Add Delete route
+* Fix $set problem
+
 # V9.0.0
 * Save username+id to newly created campgrounds
 

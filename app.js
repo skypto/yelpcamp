@@ -5,6 +5,7 @@ var express = require("express"),
   mongoose = require("mongoose"),
   passport = require("passport"),
   LocalStrategy = require("passport-local"),
+  methodOveride = require("method-override"),
   Campground = require("./models/campground"),
   Comment = require("./models/comment"),
   User = require("./models/user"),
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 //connect the style sheet by serving data from the public folder which we created
 app.use(express.static(__dirname + "/public"));
+app.use(methodOveride("_method"));
 //execute the seedDB function to populate the db anytime the server is started.
 //seedDB();
 
