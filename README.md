@@ -1,6 +1,12 @@
 # yelpcamp
 An App that provides users with information about various campgrounds available in specific locations.
 It also provides comments and reviews from other users.
+# V10.1.0 
+Authorization/Permissions
+* User can edit only campground he/she created
+* User can only delete his/her campground
+* Hide/Show edit and delete buttons 
+
 
 # V10.0.0
 * Install package "method-override"
