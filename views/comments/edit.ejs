@@ -3,7 +3,7 @@
     <div class="row">
         <h1 style="text-align:center;">Edit Comment</h1>
         <div style="width:30%; margin:25px auto;">  <!-- this will let the form take 30% of the container -->
-            <form action="/campgrounds/<%=campground_id%>/comments/<%comment._id%>?_method=PUT" method="post">
+            <form action="/campgrounds/<%=campground_id%>/comments/<%=comment._id%>?_method=PUT" method="POST">
                 <div class="form-group">  <!-- put every component in a form group to give spacing -->
                     <input class="form-control" type="text" name="comment[text]" value="<%=comment.text%>">
                 </div>
@@ -12,7 +12,7 @@
                 </div>
             </form>
             <a href="/campgrounds">Go Back</a>
-        </div>           
+        </div>       
     </div>
 </div>
 <% include ../partials/footer %>
