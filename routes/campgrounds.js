@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Campground = require("../models/campground");
+var middleware= require("../middleware");//this will automatically require the index file 
 
 //campgrounds pages route  <-INDEX
 router.get("/campgrounds", function(req, res) {
@@ -15,7 +16,7 @@ router.get("/campgrounds", function(req, res) {
 });
 
 // Setup new campground POST route  <- CREATE
-router.post("/campgrounds", isLoggedIn, function(req, res) {
+router.post("/campgrounds", middleware.isLoggedIn, function(req, res) {
   //get data from form(req.body body parser) and add to campgrounds array
   var name = req.body.name;
   var image = req.body.image;
@@ -39,7 +40,7 @@ router.post("/campgrounds", isLoggedIn, function(req, res) {
 });
 
 // Setup route to show form  <-NEW
-router.get("/campgrounds/new", isLoggedIn, function(req, res) {
+router.get("/campgrounds/new", middleware.isLoggedIn, function(req, res) {
   res.render("campgrounds/new");
 });
 
@@ -61,14 +62,14 @@ router.get("/campgrounds/:id", function(req, res) {
 });
 
 // EDIT CAMPGROUND ROUTE
-router.get("/campgrounds/:id/edit", checkCampgroundOwnership,function(req, res) {
+router.get("/campgrounds/:id/edit",middleware.checkCampgroundOwnership,function(req, res) {
     Campground.findById(req.params.id, function(err, foundCampground) {
               res.render("campgrounds/edit", { campground: foundCampground });
 });
 })
 
 // UPDATE CAMPGROUND ROUTE
-router.put("/campgrounds/:id", checkCampgroundOwnership,function(req, res) {
+router.put("/campgrounds/:id", middleware.checkCampgroundOwnership,function(req, res) {
   //find and update the correct campground
     // var data = {name: req.body.name, image: req.body.image, descripton: req.body.description} --replaced with nested solution req.body.campground
   Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(
@@ -85,7 +86,7 @@ router.put("/campgrounds/:id", checkCampgroundOwnership,function(req, res) {
 });
 
 //DESTROY CAMPGROUND ROUTE (This is why we install method-overide)
-router.delete("/campgrounds/:id",checkCampgroundOwnership, function(req, res) {
+router.delete("/campgrounds/:id",middleware.checkCampgroundOwnership, function(req, res) {
   Campground.findByIdAndRemove(req.params.id, function(err) {
     if (err) {
       res.redirect("/campgrounds");
@@ -95,35 +96,5 @@ router.delete("/campgrounds/:id",checkCampgroundOwnership, function(req, res) {
   });
 });
 
-//-- MIDDLEWARE -- 
-
-//put this function anywhere you want autentication to be checked
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
-
-//check campground ownership
-function checkCampgroundOwnership(req,res,next){
-  //is user logged in?
-  if (req.isAuthenticated()) {
-    Campground.findById(req.params.id, function(err, foundCampground) {
-      if (err) {
-        res.redirect("back");
-      } else {
-            //does user own the campground?
-            if (foundCampground.author.id.equals(req.user.id)){
-              next();
-             } else{
-                 res.redirect("back")
-            }
-      }
-    });
-  } else {
-    res.redirect("back")//this takes user back to where they came from
-  }
-}
 
 module.exports = router;
