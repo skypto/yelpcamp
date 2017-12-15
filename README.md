@@ -2,6 +2,11 @@
 An App that provides users with information about various campgrounds available in specific locations.
 It also provides comments and reviews from other users.
 
+# V11.0.0
+Adding in flash messages and Alerts
+* Install and configure connect-flash npm package
+* Add bootstrap alerts to header
+
 # V10.4.0
 * User can only edit His/Her Comments
 * User can only delete His/Her Comments

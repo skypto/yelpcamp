@@ -1,15 +1,16 @@
 //require all packages
-var express = require("express"),
-  app = express(),
-  bodyParser = require("body-parser"),
-  mongoose = require("mongoose"),
-  passport = require("passport"),
-  LocalStrategy = require("passport-local"),
-  methodOveride = require("method-override"),
-  Campground = require("./models/campground"),
-  Comment = require("./models/comment"),
-  User = require("./models/user"),
-  seedDB = require("./seeds");
+var express         = require("express"),
+  app               = express(),
+  bodyParser        = require("body-parser"),
+  mongoose          = require("mongoose"),
+  flash             = require("connect-flash"),
+  passport          = require("passport"),
+  LocalStrategy     = require("passport-local"),
+  methodOveride     = require("method-override"),
+  Campground        = require("./models/campground"),
+  Comment           = require("./models/comment"),
+  User              = require("./models/user"),
+  seedDB            = require("./seeds");
 
 //connect mongodb and create yelp_camp db
 mongoose.connect("mongodb://localhost/yelp_camp");
@@ -20,6 +21,8 @@ app.set("view engine", "ejs");
 //connect the style sheet by serving data from the public folder which we created
 app.use(express.static(__dirname + "/public"));
 app.use(methodOveride("_method"));
+//use connect-flash feature    
+app.use(flash());
 //execute the seedDB function to populate the db anytime the server is started.
 //seedDB();
 
@@ -45,9 +48,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//parse the logged in user data from passport to all the routes [console.log(req.user)]
+//parse defined data to all the routes [console.log(req.user)]
 app.use(function(req,res,next){
   res.locals.currentUser = req.user;
+  res.locals.error       = req.flash("error");
+  res.locals.success     = req.flash("success");
   next();
 });
 
