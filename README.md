@@ -6,7 +6,7 @@ It also provides comments and reviews from other users.
 * User can only edit His/Her Comments
 * User can only delete His/Her Comments
 * Hide/Show edit and delete buttons
-* Refactor Middleware
+* Refactor Middleware by moving to a separate file (middleware/index.js)
 
 # V10.3.0
 * Add Destroy Route
