@@ -2,6 +2,13 @@
 An App that provides users with information about various campgrounds available in specific locations.
 It also provides comments and reviews from other users.
 
+# V10.3.0
+* Add Destroy Route
+* Add Delete Button
+
+Campground Destroy route: /campgrounds/:id
+Comments Destroy route:   /campgrounds/:id/comments/:comment_id
+
 # V10.2.0
 Authorization/Permissions
 * Add edit route for comments

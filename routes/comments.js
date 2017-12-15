@@ -68,7 +68,20 @@ router.put("/campgrounds/:id/comments/:comment_id",function(req,res){
       }else{
         res.redirect("/campgrounds/"+req.params.id);
       }
-    })
+    });
+});
+
+
+// COMMENTS DESTROY ROUTE
+router.delete("/campgrounds/:id/comments/:comment_id", function(req,res){
+  //find by id and remove
+  Comment.findByIdAndRemove(req.params.comment_id,function(err){
+    if(err){
+      res.redirect("back");
+    }else{
+      res.redirect("/campgrounds/"+req.params.id)
+    }
+  })
 });
 
 // MIDDLEWARE -- put this function anywhere you want autentication to be checked 

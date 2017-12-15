@@ -30,7 +30,6 @@ var commentRoutes     = require("./routes/comments"),
     indexRoutes       = require("./routes/index");
 
 
-
 //PASSPORT CONFIGURATION
 app.use(
   require("express-session")({

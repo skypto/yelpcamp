@@ -70,6 +70,7 @@ router.get("/campgrounds/:id/edit", checkCampgroundOwnership,function(req, res) 
 // UPDATE CAMPGROUND ROUTE
 router.put("/campgrounds/:id", checkCampgroundOwnership,function(req, res) {
   //find and update the correct campground
+    // var data = {name: req.body.name, image: req.body.image, descripton: req.body.description} --replaced with nested solution req.body.campground
   Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(
     err,
     updatedCampground
