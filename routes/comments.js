@@ -50,7 +50,7 @@ router.get("/campgrounds/:id/comments/new",isLoggedIn,function(req, res) {
 
 
   // COMMENT EDIT ROUTE
-  router.get("/campgrounds/:id/comments/:comment_id/edit",function(req,res){
+  router.get("/campgrounds/:id/comments/:comment_id/edit",checkCommentOwnership,function(req,res){
     Comment.findById(req.params.comment_id,function(err, foundComment){
       if(err){
         res.redirect("back");
@@ -61,7 +61,7 @@ router.get("/campgrounds/:id/comments/new",isLoggedIn,function(req, res) {
   })
 
 // UPDATE COMMENT
-router.put("/campgrounds/:id/comments/:comment_id",function(req,res){
+router.put("/campgrounds/:id/comments/:comment_id",checkCommentOwnership,function(req,res){
     Comment.findByIdAndUpdate(req.params.comment_id,req.body.comment,function(err,updatedComment){
       if(err){
         res.redirect("back");
@@ -73,7 +73,7 @@ router.put("/campgrounds/:id/comments/:comment_id",function(req,res){
 
 
 // COMMENTS DESTROY ROUTE
-router.delete("/campgrounds/:id/comments/:comment_id", function(req,res){
+router.delete("/campgrounds/:id/comments/:comment_id", checkCommentOwnership,function(req,res){
   //find by id and remove
   Comment.findByIdAndRemove(req.params.comment_id,function(err){
     if(err){
@@ -81,7 +81,7 @@ router.delete("/campgrounds/:id/comments/:comment_id", function(req,res){
     }else{
       res.redirect("/campgrounds/"+req.params.id)
     }
-  })
+  });
 });
 
 // MIDDLEWARE -- put this function anywhere you want autentication to be checked 
@@ -92,6 +92,27 @@ function isLoggedIn(req,res, next){
     res.redirect("/login");
 }
 
+
+//check comment ownership
+function checkCommentOwnership(req,res,next){
+  //is user logged in?
+  if (req.isAuthenticated()) {
+    Comment.findById(req.params.comment_id, function(err, foundComment) {
+      if (err) {
+        res.redirect("back");
+      } else {
+            //does user own the comment?
+            if (foundComment.author.id.equals(req.user.id)){
+              next();
+             } else{
+                 res.redirect("back")
+            }
+      }
+    });
+  } else {
+    res.redirect("back")//this takes user back to where they came from
+  }
+}
 
 module.exports = router;
 

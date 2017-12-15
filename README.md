@@ -2,6 +2,12 @@
 An App that provides users with information about various campgrounds available in specific locations.
 It also provides comments and reviews from other users.
 
+# V10.4.0
+* User can only edit His/Her Comments
+* User can only delete His/Her Comments
+* Hide/Show edit and delete buttons
+* Refactor Middleware
+
 # V10.3.0
 * Add Destroy Route
 * Add Delete Button
