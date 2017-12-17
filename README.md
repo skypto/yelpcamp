@@ -2,6 +2,14 @@
 An App that provides users with information about various campgrounds available in specific locations.
 It also provides comments and reviews from other users.
 
+# V12.0.0
+Dynamic Pricing for camp booking
+This makes it possible to specify the cost of a campground during creation
+
+# V11.1.0
+Visual Enhancement of Landing Page
+* Background Slider and animation
+
 # V11.0.0
 Adding in flash messages and Alerts
 * Install and configure connect-flash npm package

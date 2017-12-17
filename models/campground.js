@@ -3,6 +3,7 @@ var mongoose= require("mongoose");
  // setup the Schema for yelp_camp db
  var campgroundSchema = new mongoose.Schema({
     name:String,
+    price:String,
     image:String,
     description: String,
     author: {
