@@ -2,9 +2,16 @@
 An App that provides users with information about various campgrounds available in specific locations.
 It also provides comments and reviews from other users.
 
+# V13.0.0
+Remote hosting[DB on MLab, Node App on Heroku)
+* Host node app on Heroku
+* Connect node app to new database on mLab
+* Migrate the changes to hosted app on Heroku
+
 # V12.0.0
 Dynamic Pricing for camp booking
 This makes it possible to specify the cost of a campground during creation
+Connect to new database instance for this experiment "mongodb://localhost/yelp_camp_v12"
 
 # V11.1.0
 Visual Enhancement of Landing Page

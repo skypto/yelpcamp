@@ -13,7 +13,9 @@ var express         = require("express"),
   seedDB            = require("./seeds");
 
 //connect mongodb and create yelp_camp db
-mongoose.connect("mongodb://localhost/yelp_camp_v12");
+// mongoose.connect("mongodb://localhost/yelp_camp_v12");
+mongoose.connect("mongodb://skypto:yelpcamp@ds133127.mlab.com:33127/yelpcamp")
+
 // Set body parser package get the form data out of forms.
 app.use(bodyParser.urlencoded({ extended: true }));
 //set the route engine for view to allow the use of filenames without .ejs extension
