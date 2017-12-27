@@ -65,7 +65,11 @@ app.use(commentRoutes);
 
 
 
-//Server initialization
-app.listen(3000, function(req, res) {
+//Server initialization (local approach)
+/* app.listen(3000, function(req, res) {
   console.log("Server started, listening on port 3000");
 });
+*/
+
+//Server initialization (Local and remote approach)
+app.listen(process.env.PORT || 5000);
