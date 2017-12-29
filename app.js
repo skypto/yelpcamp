@@ -72,4 +72,5 @@ app.use(commentRoutes);
 */
 
 //Server initialization (Local and remote approach)
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 5000,function(){
+  console.log("YelpCamp Server Started");});
