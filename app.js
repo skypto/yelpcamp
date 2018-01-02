@@ -16,8 +16,9 @@ var express         = require("express"),
 
 //db for local. I set to an evironment variable ie export DATABASEURL=mongodb://localhost/yelp_camp_v12
 //mongoose.connect("mongodb://localhost/yelp_camp_v12");
-mongoose.connect(process.env.DATABASEURL);
-console.log(process.env.DATABASEURL);
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v12";
+mongoose.connect(url);
+console.log(url);
 
 //db for heroku. This url is set in Heroku to allow for separate live db.
 //mongoose.connect("mongodb://skypto:yelpcamp@ds133127.mlab.com:33127/yelpcamp")
