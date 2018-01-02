@@ -13,8 +13,15 @@ var express         = require("express"),
   seedDB            = require("./seeds");
 
 //connect mongodb and create yelp_camp db
-// mongoose.connect("mongodb://localhost/yelp_camp_v12");
-mongoose.connect("mongodb://skypto:yelpcamp@ds133127.mlab.com:33127/yelpcamp")
+
+//db for local. I set to an evironment variable ie export DATABASEURL=mongodb://localhost/yelp_camp_v12
+//mongoose.connect("mongodb://localhost/yelp_camp_v12");
+mongoose.connect(process.env.DATABASEURL);
+console.log(process.env.DATABASEURL);
+
+//db for heroku. This url is set in Heroku to allow for separate live db.
+//mongoose.connect("mongodb://skypto:yelpcamp@ds133127.mlab.com:33127/yelpcamp")
+
 
 // Set body parser package get the form data out of forms.
 app.use(bodyParser.urlencoded({ extended: true }));
