@@ -1,7 +1,19 @@
 # yelpcamp
-An App that provides users with information about various campgrounds available in specific locations.
-It also provides comments and reviews from other users.
+This Web Application allow users to view campgrounds with a short description as well as booking cost. Once you login or signup, you can begin to create your own campgrounds that includes a title, image address, pricing and short description. You will also be able to leave a comment or edit your campground data. 
+Unregistered users can view and leave comments and reviews for each campsite.
 
+TECHNOLOGIES USED: 
+* FRONTEND: HTML5, CSS3, JavaScript and Bootstrap for responsive Layout
+* BACKEND: NodeJS, NPM, ExpressJS, REST and PassportJS.
+* DATABASE: MongoDB 
+* Local Development in Visual Studio Code and source versioned with GIT.
+* Remote Hosting on Heroku and MongoLab
+
+
+[# VIEW LIVE DEMO](https://infinite-everglades-98908.herokuapp.com/)
+
+
+VERSION CONTROL 
 # V13.3.0
 * Set environment variable to manage automatic switch between Test DB and production DB
 
